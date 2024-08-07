@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "VazirMatn";
+  src: url("/fonts/VazirMatn.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --bg-color: #0f0e17;
+  --text-color: #fffffe;
+  --accent-color: #ff8906;
+  --secondary-color: #f25f4c;
+  --tertiary-color: #e53170;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "VazirMatn", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 137, 6, 0.5);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(242, 95, 76, 0.5);
+}
+
+.date-time {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.date,
+.time {
+  font-size: 1rem;
+  margin: 0.25rem 0;
+}
+
+.time {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  text-shadow: 0 0 10px rgba(242, 95, 76, 0.5);
+}
+
+.video-container {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(229, 49, 112, 0.3);
+}
+
+.video-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.prayer-times-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.prayer-times-grid div {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+@media (min-width: 600px) {
+  .app {
+    padding: 2rem;
+  }
+
+  .glass-container {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+
+  .date-time {
+    margin-bottom: 1.5rem;
+  }
+
+  .date,
+  .time {
+    font-size: 1.1rem;
+  }
+
+  .time {
+    font-size: 1.3rem;
+  }
+
+  .prayer-times-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+.weather-forecast {
+  margin-top: 1rem;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.weather-item {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
