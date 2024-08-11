@@ -1,70 +1,98 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# MadCam
 
-## Available Scripts
+MadCam is a web-based security camera application that streams video from a webcam connected to your laptop or desktop. The application is built using Flask for the backend and React for the frontend. It displays the video feed in real-time, along with the current date and time in the Persian calendar.
 
-In the project directory, you can run:
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Before you start, ensure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Python 3.x](https://www.python.org/downloads/)
+- A webcam connected to your computer.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone the Repository
 
-### `npm run build`
+```bash
+git clone https://github.com/yourusername/MadCam.git
+cd MadCam
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Install Python Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+pip install flask opencv-python flask-cors
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. Build the React Frontend
 
-### `npm run eject`
+Navigate to the root of the project where `package.json` is located and run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm install
+npm run build
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This will create a production-ready build of the React frontend, placing the output in the `build/` directory inside the `public/` folder.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Running the Application
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1. Configure Your Webcam
 
-## Learn More
+In the `webcam.py` file, you'll find the following lines:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```python
+camera_name = "Microsoft® LifeCam HD-3000"
+camera_index_or_path = find_camera_by_name(camera_name)
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you're using a different webcam, you'll need to replace `"Microsoft® LifeCam HD-3000"` with the name of your webcam. To find the correct name, you can check your system’s device manager or webcam software.
 
-### Code Splitting
+### 2. Start the Flask Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+In the root directory (where `webcam.py` is located), run:
 
-### Analyzing the Bundle Size
+```bash
+python webcam.py
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This will start the Flask server on `http://localhost:8080` by default, serving both the backend and the frontend.
 
-### Making a Progressive Web App
+### 3. Accessing the App Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Open your web browser and go to:
 
-### Advanced Configuration
+```
+http://localhost:8080
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4. Accessing the App Remotely
 
-### Deployment
+To access your webcam stream remotely:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. **Port Forwarding**: Set up port forwarding on your router to forward external requests on port `8080` to your local machine’s IP address (`192.168.1.x:8080`).
 
-### `npm run build` fails to minify
+2. **Public IP Access**: Access the app using your public IP address and the forwarded port. Example:
+   ```
+   http://<your-public-ip>:8080
+   ```
+## Troubleshooting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Common Issues
+
+- **Blank Screen**: Ensure the Flask server is running and the camera is configured correctly.
+- **Camera Not Detected**: Verify that your webcam is connected and working correctly. Update the `camera_name` in `webcam.py` if necessary.
+- **Port Forwarding Not Working**: Check your router’s settings and firewall rules.
+
+### Logs
+
+- **Flask Logs**: Check the terminal where `webcam.py` is running for any errors.
+
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+---
